@@ -5,7 +5,7 @@ body {
 
 .projects {
   display: flex;
-  flex-wrap: flex;
+  flex-wrap: wrap;
 }
 
 figcaption {
