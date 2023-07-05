@@ -1,0 +1,19 @@
+body {
+  font-family: 'Orbitron';
+  font-size: 24px;
+}
+
+.projects {
+  display: flex;
+}
+
+figcaption {
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}

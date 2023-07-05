@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: 'Tomorrow';
+}
+
+.container {
+  width: 40vw;
+  margin: 0 auto;
+}
+
+.input-field {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+ul {
+  font-family: 'Sintony';
+}
+
+.btn,
+.clear-tasks {
+  border: none;
+  font-family: 'Tomorrow';
+  font-size: 15px;
+  color: white;
+  padding: 5px 25px;
+  margin-left: auto;
+}
+
+.btn {
+  background-color: #05aa6d;
+}
+
+.clear-tasks {
+  background-color: #ff0000;
+}
+
+.task-input,
+.filter-input {
+  border: none;
+  border-bottom: 1px solid #737373;
+  font-family: 'Tomorrow';
+  width: 60%;
+}
+
+.collection {
+  margin: 30px 0;
+  padding: 0;
+}
+
+.delete-item {
+  padding: 0 15px;
+  margin-left: auto;
+}
+
+.collection-item {
+  display: flex;
+}

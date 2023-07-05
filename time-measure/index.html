@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Time Measure</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="public/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="container">
+        <h1> Welcome to the Time Measurer</h1>
+        <fieldset class="time-measurer">
+            <div class="date-picker">
+                <div class="date-picker__start">
+                    <div>
+                        <label for="start">Select starting date:</label>
+
+                        <input type="date" id="start" name="date-start">
+                    </div>
+                </div>
+
+                <div class="date-picker__end">
+                    <div>
+                        <label for="end">Select ending date:</label>
+
+                        <input type="date" id="finish" name="date-finish">
+                    </div>
+                    <div>
+                        <div class="preset">
+                            Or select a time preset:
+                        </div>
+                        <button class="btn btn--week" onclick="updateEndDate('week')" disabled>Week</button>
+                        <button class="btn btn--month" onclick="updateEndDate('month')" disabled>Month</button>
+                    </div>
+                </div>
+            </div>
+            <fieldset class="options" id="options-days">
+                <legend>Select days to include:</legend>
+
+                <div>
+                    <input type="radio" id="every day" name="daysToInclude" value="every day" checked>
+                    <label for="every day">every day</label>
+                </div>
+                <div>
+                    <input type="radio" id="weekdays" name="daysToInclude" value="weekdays">
+                    <label for="weekdays">weekdays</label>
+                </div>
+                <div>
+                    <input type="radio" id="weekends" name="daysToInclude" value="weekends">
+                    <label for="weekends">weekends</label>
+                </div>
+            </fieldset>
+            <fieldset class="options" id="options-units">
+                <legend>Select units:</legend>
+
+                <div>
+                    <input type="radio" id="days" name="unit" value="days" checked>
+                    <label for="days">days</label>
+                </div>
+                <div>
+                    <input type="radio" id="hours" name="unit" value="hours">
+                    <label for="hours">hours</label>
+                </div>
+                <div>
+                    <input type="radio" id="minutes" name="unit" value="minutes">
+                    <label for="minutes">minutes</label>
+                </div>
+                <div>
+                    <input type="radio" id="seconds" name="unit" value="seconds">
+                    <label for="seconds">seconds</label>
+                </div>
+            </fieldset>
+            <button class="btn btn--calculate" type="submit">Calculate</button>
+        </fieldset>
+        <div>
+            <h2 class="result"></h2>
+        </div>
+        <div>
+            <h2>History:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="1">Starting date</th>
+                        <th colspan="1">Ending date</th>
+                        <th colspan="1">Days incl</th>
+                        <th colspan="1">Units</th>
+                        <th colspan="1">Result</th>
+                    </tr>
+                </thead>
+                <tbody class="history">
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+    <script type="text/javascript" src="public/script.js"></script>
+
+</body>
+
+</html>

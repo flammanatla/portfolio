@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 166%;
+  color: #cecece;
+  background-color: #0b0b0b; }
+
+main {
+  background-image: url("../img/time_.jpg");
+  /*background-size: cover;*/ }
+
+.container {
+  padding: 70px 20%; }
+  @media (max-width: 767px) {
+    .container {
+      padding: 20px; } }
+
+h1 {
+  margin: 0;
+  padding-bottom: 50px;
+  line-height: 120%; }
+
+h2 {
+  margin: 70px 0 30px; }
+
+.date-picker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  @media (max-width: 991px) {
+    .date-picker {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; } }
+  .date-picker__start, .date-picker__end {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+    @media (max-width: 991px) {
+      .date-picker__start, .date-picker__end {
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        width: 100%; } }
+    .date-picker__start input, .date-picker__end input {
+      display: block;
+      margin: 10px 10px 10px 0;
+      height: 38px;
+      font-size: 22px;
+      width: 193px; }
+    @media (max-width: 576px) {
+      .date-picker__start, .date-picker__end {
+        width: 100%; } }
+
+.time-measurer {
+  border: none;
+  padding: 0; }
+
+.preset {
+  padding: 0 0 10px 0; }
+
+.options {
+  padding: 10px 0;
+  margin: 20px 0;
+  border: 1px solid rgba(192, 192, 192, 0.7); }
+  .options legend {
+    padding: 0 5px; }
+  .options div input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    -webkit-transition: 0.2s all linear;
+    -o-transition: 0.2s all linear;
+    transition: 0.2s all linear;
+    margin-right: 5px;
+    position: relative;
+    top: 4px; }
+    .options div input:checked {
+      border: 6px solid #cecece; }
+
+table {
+  border: 1px solid #333;
+  width: 100%; }
+
+thead {
+  background-color: #333;
+  color: #fff; }
+
+tr:nth-child(even) {
+  background-color: rgba(51, 51, 51, 0.7); }
+
+.btn {
+  border: none;
+  padding: 10px 20px;
+  background-color: #d9d9d9;
+  text-transform: uppercase;
+  color: #333;
+  font-size: 18px; }
+
+.btn:disabled {
+  color: #0b0b0b;
+  background-color: #333;
+  /*background-color: #525252;*/ }
+
+.result {
+  height: 60px;
+  text-align: center; }
