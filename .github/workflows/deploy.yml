@@ -19,14 +19,11 @@ jobs:
           node-version: '18' # Change this to the appropriate Node.js version for your project
 
       # Forkify project
-      - name: Change directory to the Forkify Project
-        run: cd forkify && pwd
-
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies for the Forkify project
+        run: cd forkify && npm install
 
       - name: Build project
-        run: npm run build # Replace this with your build command (e.g., parcel build)
+        run: cd forkify && npm run build # Replace this with your build command (e.g., parcel build)
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
