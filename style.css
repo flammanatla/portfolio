@@ -4,6 +4,10 @@ body {
   margin: 2rem;
 }
 
+.preview__img {
+  text-align: center;
+}
+
 .projects {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
