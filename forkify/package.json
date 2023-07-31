@@ -5,7 +5,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --dist-dir ./dist"
+    "build": "parcel build --dist-dir ./dist --public-url /dist"
   },
   "author": "Jonas, Natalka",
   "license": "ISC",
