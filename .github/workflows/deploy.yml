@@ -20,7 +20,7 @@ jobs:
 
       # Forkify project
       - name: Change directory to the Forkify Project
-        run: cd forkify
+        run: cd forkify && pwd
 
       - name: Install dependencies
         run: npm install
