@@ -26,6 +26,16 @@ body {
   grid-gap: 0.5rem 2rem;
 }
 
+@media (max-width: 43em) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    margin: 1rem;
+  }
+}
+
 .project {
   text-decoration: none;
 }
