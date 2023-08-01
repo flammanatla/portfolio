@@ -1,26 +1,64 @@
 body {
-  font-family: 'Orbitron';
+  font-family: 'Manrope';
+
   font-size: 24px;
   margin: 2rem;
 }
 
-.preview__img {
-  text-align: center;
-}
-
 .projects {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4rem 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 0.5rem 2rem;
 }
 
-figcaption {
+.project {
+  text-decoration: none;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid darkgray;
+  border-radius: 6px;
+}
+
+.preview__img {
+  padding: 1rem 0rem;
+}
+
+.preview__details {
   font-size: 18px;
-  text-align: center;
+  font-weight: 700;
   text-decoration: none;
   color: black;
+  border-top: 1px solid darkgray;
+  width: 100%;
 }
 
-a {
-  text-decoration: none;
+.preview__title {
+  margin: 0.5rem 1rem;
+}
+
+.preview__description {
+  margin: 0.5rem 1rem;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.preview__tech {
+  font-family: 'Inconsolata';
+  font-weight: 400;
+
+  font-size: 14px;
+  margin: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.preview__tech span {
+  background: rgb(219, 237, 219);
+  padding: 0.25rem 1rem;
+  border-radius: 4px;
 }

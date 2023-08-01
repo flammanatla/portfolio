@@ -7,7 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/modern-normalize@2.0.0/modern-normalize.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -18,68 +22,155 @@
 
     <div class="projects">
       <a class="project" href="forkify/dist/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/forkify.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/forkify.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Forkify</div>
+            <div class="preview__description">
+              Application for searching and displaying recipes with ability to
+              bookmark and save own recipies.
+            </div>
+            <div class="preview__tech">
+              <span>Parcel</span>
+              <span>OOP</span>
+              <span>MVC Architecture</span>
+              <span>External libraries</span>
+              <span>Modules</span>
+              <span>AJAX</span>
+            </div>
           </div>
-          <figcaption class="">Forkify</figcaption>
-        </figure>
+        </div>
       </a>
       <a class="project" href="mapty/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/mapty.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/mapty.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Mapty</div>
+            <div class="preview__description">
+              Application for tracking workouts on a map based on the user's
+              geolocation. Ability to edit workouts.
+            </div>
+            <div class="preview__tech">
+              <span>OOP</span>
+              <span>Geolocation API</span>
+              <span>Leaflet</span>
+              <span>AJAX</span>
+            </div>
           </div>
-          <figcaption class="">Mapty</figcaption>
-        </figure>
+        </div>
       </a>
       <a class="project" href="bankist/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/bankist.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/bankist.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">The Bankist (Landing Page)</div>
+            <div class="preview__description">
+              Landing page for The Bankist app with tabbed components and
+              sliders.
+            </div>
+            <div class="preview__tech">
+              <span>Advanced DOM</span>
+              <span>Advanced CSS</span>
+            </div>
           </div>
-          <figcaption class="">The Bankist</figcaption>
-        </figure>
+        </div>
+      </a>
+      <a class="project" href="bankist/webapp/webapp.html">
+        <div class="preview">
+          <img class="preview__img" src="img/bankist.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">The Bankist (User App)</div>
+            <div class="preview__description">
+              Minimalistic banking app, allows to check transactions history and
+              send/request money.
+            </div>
+            <div class="preview__tech">
+              <span>DOM Manpulation</span>
+              <span>CSS</span>
+            </div>
+          </div>
+        </div>
       </a>
       <a class="project" href="snake-game/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/snake.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/snake.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Snake the Fruiteater</div>
+            <div class="preview__description">
+              Classic Snake game created with Phraser 3 framework
+            </div>
+            <div class="preview__tech">
+              <span>Phraser 3</span>
+            </div>
           </div>
-          <figcaption class="">Snake the Fruiteater</figcaption>
-        </figure>
+        </div>
       </a>
       <a class="project" href="workshop-github-search-app/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/github.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/github.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Github Search</div>
+            <div class="preview__description">
+              Minimalistic search for GitHub users. Shows up to 5 latest repos.
+            </div>
+            <div class="preview__tech">
+              <span>DOM Manipulation</span>
+              <span>CSS</span>
+            </div>
           </div>
-          <figcaption class="">Github Search</figcaption>
-        </figure>
+        </div>
       </a>
       <a class="project" href="time-measure/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/time.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/time.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Time Measurer</div>
+            <div class="preview__description">
+              Time calculator between two dates. Keep the history and store it
+              in LocalStorage
+            </div>
+            <div class="preview__tech">
+              <span>DOM Manipulation</span>
+              <span>CSS</span>
+              <span>Browser API</span>
+            </div>
           </div>
-          <figcaption class="">Time Measurer</figcaption>
-        </figure>
+        </div>
+      </a>
+
+      <a class="project" href="workshop-todolist-master/">
+        <div class="preview">
+          <img class="preview__img" src="img/todolist.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Todolist</div>
+            <div class="preview__description">
+              Minimalistic To-do app. Allows to perform CRUD operations and
+              search for a task.
+            </div>
+            <div class="preview__tech">
+              <span>DOM Manipulation</span>
+              <span>CSS</span>
+              <span>Browser API</span>
+            </div>
+          </div>
+        </div>
       </a>
       <a class="project" href="weatherApp-master/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/weather.png" alt="" />
+        <div class="preview">
+          <img class="preview__img" src="img/weather.png" alt="" />
+          <div class="preview__details">
+            <div class="preview__title">Weather App</div>
+            <div class="preview__description">
+              My first ever webapp. Shows the weather in selected location. What
+              else it can do? :)
+            </div>
+            <div class="preview__tech">
+              <span>DOM Manipulation</span>
+              <span>CSS</span>
+              <span>3rd party API</span>
+            </div>
           </div>
-          <figcaption class="">Weather App</figcaption>
-        </figure>
-      </a>
-      <a class="project" href="workshop-todolist-master/">
-        <figure class="">
-          <div class="preview__img">
-            <img class="" src="img/todolist.png" alt="" />
-          </div>
-          <figcaption class="">Todolist</figcaption>
-        </figure>
+        </div>
       </a>
     </div>
   </body>

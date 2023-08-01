@@ -416,6 +416,9 @@ h2 {
 .footer {
   padding: 3rem 3rem;
   background-color: #37383d;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .footer__nav {
