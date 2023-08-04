@@ -115,8 +115,6 @@ const init = function () {
 init();
 
 export const uploadRecipe = async function (newRecipe) {
-  console.log(newRecipe, Object.entries(newRecipe));
-
   const ingredients = Object.entries(newRecipe)
     .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
     .map(ingredient => {
@@ -146,4 +144,17 @@ export const uploadRecipe = async function (newRecipe) {
   state.recipe = createRecipeObject(data);
   addBookmark(state.recipe);
   console.log(data);
+};
+
+export const validateIngredient = function (ingredientValue) {
+  const regex = /^[0-9.]*,[a-zA-Z ]*,[a-zA-Z ]+$/; ///^(\d+(\.\d+)?,)?([A-Za-z]+,)?[^,]+$/;
+  const regexpRes = regex.test(ingredientValue);
+
+  console.log(regexpRes);
+  if (!regexpRes) {
+    return regexpRes;
+  }
+
+  const ingQuantity = ingredientValue.split(',')[0];
+  return Number.isFinite(Number(ingQuantity));
 };

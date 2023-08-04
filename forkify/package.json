@@ -5,7 +5,9 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --dist-dir ./dist --public-url /portfolio/forkify/dist/"
+    "build": "parcel build --dist-dir ./dist --public-url /portfolio/forkify/dist/",
+    "buildlocal": "parcel build --dist-dir ./dist",
+    "clean": "rm -rf ./dist && rm -rf ./.parcel-cache"
   },
   "author": "Jonas, Natalka",
   "license": "ISC",

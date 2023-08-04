@@ -94,6 +94,38 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlIngredients = function (
+  inputField,
+  value,
+  ingredientNumber,
+  validationCache
+) {
+  let isUploadButtonDisabled = false;
+  let validationState;
+
+  if (value === '') {
+    validationCache[ingredientNumber] = true;
+    validationState = 'Empty';
+  } else {
+    const isValid = model.validateIngredient(value);
+    validationCache[ingredientNumber] = isValid;
+    validationState = isValid ? 'Valid' : 'NotValid';
+  }
+
+  console.log(validationCache);
+  if (validationCache.filter(element => element === false).length > 0) {
+    isUploadButtonDisabled = true;
+  } else {
+    isUploadButtonDisabled = false;
+  }
+
+  addRecipeView.renderValidation(
+    inputField,
+    validationState,
+    isUploadButtonDisabled
+  );
+};
+
 const controlAddRecipe = async function (newRecipe) {
   try {
     // show loading spinner
@@ -133,5 +165,6 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  addRecipeView.addHandlerValidate(controlIngredients);
 };
 init();
