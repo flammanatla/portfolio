@@ -98,6 +98,7 @@ nav {
   grid-template-columns: 4fr 3fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
   gap: 2rem;
+  height: 100%;
 
   /* NOTE This creates the fade in/out anumation */
   opacity: 0;
@@ -416,9 +417,7 @@ h2 {
 .footer {
   padding: 3rem 3rem;
   background-color: #37383d;
-  position: absolute;
   width: 100%;
-  bottom: 0;
 }
 
 .footer__nav {
