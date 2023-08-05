@@ -31,6 +31,19 @@ export const AJAX = async function (url, uploadData = undefined) {
   return data;
 };
 
+export const deleteRecipe = async function (url) {
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+
+  if (!response.ok)
+    throw new Error(
+      `${data.message} (${response.status} ${response.statusText})`
+    );
+};
 /*
 export const getJSON = async function (url) {
   //try {

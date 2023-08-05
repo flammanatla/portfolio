@@ -2,6 +2,7 @@ import { async } from 'regenerator-runtime';
 import { API_URL, API_KEY } from './config.js';
 import { RES_PER_PAGE } from './config.js';
 import { AJAX } from './helpers.js';
+import { deleteRecipe } from './helpers.js';
 
 export const state = {
   recipe: {},
@@ -43,6 +44,10 @@ export const loadRecipe = async function (id) {
   //   console.error(`${err} ⛔️`);
   //   throw err;
   // }
+};
+
+export const removeRecipe = async function (id) {
+  await deleteRecipe(`${API_URL}${id}?key=${API_KEY}`);
 };
 
 export const loadSearchResults = async function (query) {

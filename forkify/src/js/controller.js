@@ -94,6 +94,22 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlRemoveRecipe = async function () {
+  const id = window.location.hash.slice(1);
+  console.log(JSON.stringify(model.state.recipe));
+
+  // remove recipe from server
+  await model.removeRecipe(id);
+
+  // remove bookmark from the model and update bookmarks panel
+  if (model.state.recipe.bookmarked) {
+    model.removeBookmark(model.state.recipe.id);
+    bookmarksView.render(model.state.bookmarks);
+  }
+
+  window.location = '/';
+};
+
 const controlIngredients = function (
   inputField,
   value,
@@ -162,6 +178,7 @@ const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
+  recipeView.addHandlerRemoveRecipe(controlRemoveRecipe);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);

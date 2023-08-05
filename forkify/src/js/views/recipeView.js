@@ -2,6 +2,7 @@ import View from './View.js';
 
 import fracty from 'fracty';
 import icons from 'url:../../img/icons.svg';
+import deleteBtn from 'bundle-text:../../img/delete.svg';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -67,6 +68,10 @@ class RecipeView extends View {
       this._data.bookmarked ? '-fill' : ''
     }"></use>
           </svg>
+        </button>
+        <button class="btn--round btn--delete ${
+          this._data.key ? '' : 'hidden'
+        }">${deleteBtn}
         </button>
       </div>
 
@@ -140,6 +145,16 @@ class RecipeView extends View {
   addHandlerAddBookmark(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--bookmark');
+
+      if (!btn) return;
+
+      handler();
+    });
+  }
+
+  addHandlerRemoveRecipe(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn--delete');
 
       if (!btn) return;
 
