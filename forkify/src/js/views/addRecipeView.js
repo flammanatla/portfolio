@@ -1,5 +1,5 @@
 import View from './View.js';
-import icons from 'url:../../img/icons.svg';
+import { VALIDATION_DELAY_SEC } from '../config.js';
 
 class addRecipeView extends View {
   _parentElement = document.querySelector('.upload');
@@ -46,7 +46,7 @@ class addRecipeView extends View {
 
           validationTimer = setTimeout(() => {
             handler(e.target, e.target.value, index, validationCache);
-          }, 500);
+          }, VALIDATION_DELAY_SEC * 1000);
         });
       });
   }
