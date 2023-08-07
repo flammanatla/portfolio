@@ -14,12 +14,6 @@ class BookmarksView extends View {
       .map(bookmark => previewView.render(bookmark, false))
       .join('');
   }
-
-  // _generateMarkup() {
-  //   return this._data
-  //     .map(bookmark => previewView.generateMarkup(bookmark)) // render(bookmark, false))
-  //     .join('');
-  // }
 }
 
 export default new BookmarksView();

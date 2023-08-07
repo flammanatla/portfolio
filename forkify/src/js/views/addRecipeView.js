@@ -1,8 +1,10 @@
 import View from './View.js';
+import icons from 'url:../../img/icons.svg';
 import { VALIDATION_DELAY_SEC } from '../config.js';
 
 class addRecipeView extends View {
   _parentElement = document.querySelector('.upload');
+  _statusElement = this._parentElement.nextElementSibling;
   _msg = `Recipe successfully uploaded!`;
 
   _window = document.querySelector('.add-recipe-window');
@@ -21,11 +23,24 @@ class addRecipeView extends View {
   }
 
   toggleWindow() {
+    if (this._overlay.classList.contains('hidden')) {
+      this.setFormVisibility(true);
+      this.setStatusVisibility(false);
+
+      this.resetForm();
+    }
+
     this._overlay.classList.toggle('hidden');
     this._window.classList.toggle('hidden');
+  }
 
-    // hide status
-    // show form
+  resetForm() {
+    this._parentElement.reset();
+
+    this._parentElement.querySelectorAll('.toValidate').forEach(element => {
+      element.nextElementSibling.innerHTML = '';
+      element.style.border = '1px solid #ddd';
+    });
   }
 
   #addHandlerHideWindow() {
@@ -62,6 +77,7 @@ class addRecipeView extends View {
 
   renderValidation(inputField, validationState, isUploadButtonDisabled) {
     const uploadBtn = this._parentElement.querySelector('.upload__btn');
+
     if (isUploadButtonDisabled) {
       uploadBtn.setAttribute('disabled', '');
     } else {
@@ -80,6 +96,51 @@ class addRecipeView extends View {
       inputField.nextElementSibling.innerHTML = '';
       inputField.style.border = '1px solid #ddd';
     }
+  }
+
+  renderStatus(type, message) {
+    const markupSuccess = `
+      <div>
+        <svg>
+          <use href="${icons}.svg#icon-smile"></use>
+        </svg>
+      </div>
+      <p>${message || this._msg}</p>
+    `;
+
+    const markupFail = `
+      <div>
+        <svg>
+          <use href="${icons}#icon-alert-triangle"></use>
+        </svg>
+      </div>
+      <p>${message || this._errorMsg}</p>
+    `;
+
+    if (type === 'success') {
+      // this._statusElement.insertAdjacentHTML('afterbegin', markupSuccess);
+      this._statusElement.innerHTML = markupSuccess;
+    }
+
+    if (type === 'fail') {
+      // this._statusElement.insertAdjacentHTML('afterbegin', markupFail);
+      this._statusElement.innerHTML = markupFail;
+    }
+
+    this.setFormVisibility(false);
+    this.setStatusVisibility(true);
+  }
+
+  setFormVisibility(flag) {
+    flag
+      ? this._parentElement.classList.remove('remove')
+      : this._parentElement.classList.add('remove');
+  }
+
+  setStatusVisibility(flag) {
+    flag
+      ? this._statusElement.classList.remove('remove')
+      : this._statusElement.classList.add('remove');
   }
 
   _generateMarkup() {}

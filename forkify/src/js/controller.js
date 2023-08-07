@@ -144,9 +144,6 @@ const controlIngredients = function (
 
 const controlAddRecipe = async function (newRecipe) {
   try {
-    // show loading spinner
-    addRecipeView.renderSpinner();
-
     // upload the new recipe data
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
@@ -155,7 +152,7 @@ const controlAddRecipe = async function (newRecipe) {
     recipeView.render(model.state.recipe);
 
     // success message
-    addRecipeView.renderMessage();
+    addRecipeView.renderStatus('success');
 
     // render bookmark view
     bookmarksView.render(model.state.bookmarks);
@@ -166,10 +163,14 @@ const controlAddRecipe = async function (newRecipe) {
     // close modal form
     setTimeout(function () {
       addRecipeView.toggleWindow();
-      location.reload();
+      addRecipeView.setFormVisibility(true);
+      addRecipeView.setStatusVisibility(false);
     }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
-    addRecipeView.renderError(err.message);
+    addRecipeView.renderStatus('fail', err.message);
+
+    addRecipeView.setFormVisibility(false);
+    addRecipeView.setStatusVisibility(true);
   }
 };
 
