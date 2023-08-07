@@ -102,7 +102,7 @@
     justify-self: center;
 
     &:disabled {
-      background-image: none; //linear-gradient(to bottom right, #bebeb8, #746969);
+      background-image: none;
       background-color: #ddd;
     }
   }

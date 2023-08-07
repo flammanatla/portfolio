@@ -31,7 +31,6 @@ const createRecipeObject = function (data) {
 };
 
 export const loadRecipe = async function (id) {
-  //try {
   const data = await AJAX(`${API_URL}${id}?key=${API_KEY}`);
   state.recipe = createRecipeObject(data);
 
@@ -40,10 +39,6 @@ export const loadRecipe = async function (id) {
   } else {
     state.recipe.bookmarked = false;
   }
-  // } catch (err) {
-  //   console.error(`${err} ⛔️`);
-  //   throw err;
-  // }
 };
 
 export const removeRecipe = async function (id) {

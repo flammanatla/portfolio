@@ -11,10 +11,6 @@ import addRecipeView from './views/addRecipeView.js';
 
 import { MODAL_CLOSE_SEC } from './config.js';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipes = async function () {
   try {
     // Get recipeId from the address bar
