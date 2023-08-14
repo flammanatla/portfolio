@@ -13,21 +13,20 @@
     outline: none;
   }
 
-  & > *:first-child {
-    margin-right: 1rem;
-  }
+  // & > *:first-child {
+  //   margin-right: 1rem;
+  // }
 }
 
 .btn {
   @extend %btn;
 
-  padding: 1.5rem 4rem;
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 600;
 
   svg {
-    height: 2.25rem;
-    width: 2.25rem;
+    height: 1.5rem;
+    width: 1.5rem;
     fill: currentColor;
   }
 }
@@ -35,54 +34,34 @@
 .btn--rectangular {
   text-transform: none;
   display: inline-flex;
-  gap: 1.1rem;
+  gap: 1rem;
   align-items: center;
   justify-content: space-around;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   border-radius: 0;
   border: 1px solid $color-border;
   font-weight: 400;
 
   svg {
-    height: 2rem;
-    width: 2rem;
+    height: 1.6rem;
+    width: 1.6rem;
     fill: $color-accent;
   }
 }
 
 .btn--accent {
-  font-size: 1.2rem;
-  padding: 0.8rem 1.4rem;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
   color: $color-accent;
-  margin-top: 2rem;
-}
-
-.btn--small {
-  &,
-  &:link,
-  &:visited {
-    @extend %btn;
-
-    font-size: 1.4rem;
-    font-weight: 600;
-    padding: 1.25rem 2.25rem;
-    text-decoration: none;
-
-    svg {
-      height: 1.75rem;
-      width: 1.75rem;
-      fill: currentColor;
-    }
-  }
+  margin-top: 1.5rem;
 }
 
 .btn--inline {
   color: $color-grey-light-2;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   font-weight: 600;
   border: none;
   background-color: $color-secondary;
-  padding: 0.8rem 1.2rem;
   cursor: pointer;
 
   display: flex;
@@ -90,8 +69,8 @@
   transition: all 0.2s;
 
   svg {
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 1.2rem;
+    width: 1.2rem;
     fill: currentColor;
     margin: 0 0.2rem;
   }
@@ -225,8 +204,8 @@
   }
 
   p {
-    margin-left: 1.5rem;
-    font-size: 1.8rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
     line-height: 1.5;
     font-weight: 600;
   }

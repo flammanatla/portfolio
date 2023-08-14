@@ -2,7 +2,7 @@
   background-color: $color-primary;
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-gap: 3rem;
+  grid-gap: 2.5rem;
 
   &__header {
     display: flex;
@@ -10,17 +10,18 @@
   }
 
   &__details {
-    margin-top: 3rem;
-    margin-right: 3rem;
+    margin-top: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   &__title {
     font-weight: 400;
     text-transform: uppercase;
+    font-size: 1.125rem;
   }
 
   &__info-data {
-    font-size: 1.3rem;
+    font-size: 0.875rem;
   }
 
   &__info-button {

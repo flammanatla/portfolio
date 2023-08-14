@@ -6,8 +6,8 @@
   justify-content: space-between;
 
   &__logo {
-    margin-left: 4rem;
-    height: 4.6rem;
+    margin-left: 2.4rem;
+    height: 2.75rem;
     display: block;
   }
 }
@@ -16,7 +16,7 @@
   background-color: #fff;
   display: flex;
   align-items: center;
-  padding-left: 3rem;
+  padding-left: 0.8rem;
   transition: all 0.3s;
 
   &:focus-within {
@@ -30,7 +30,7 @@
     font-family: inherit;
     color: inherit;
     font-size: 1.2rem;
-    width: 30rem;
+    width: 22rem;
 
     &:focus {
       outline: none;
@@ -57,12 +57,13 @@
     border: none;
     display: flex;
     align-items: center;
+    padding: 0.8rem 1.8rem;
   }
 }
 
 .nav {
   align-self: stretch;
-  margin-right: 2.5rem;
+  margin-right: 2rem;
 
   &__list {
     list-style: none;
@@ -78,21 +79,21 @@
     height: 100%;
     font-family: inherit;
     color: inherit;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     font-weight: 700;
     text-transform: uppercase;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0 1.5rem;
+    padding: 0 1.2rem;
     transition: all 0.3s;
 
     display: flex;
     align-items: center;
 
     svg {
-      height: 3rem;
-      width: 3rem;
+      height: 1.8rem;
+      width: 1.8rem;
       fill: $color-accent;
       margin-right: 0.7rem;
       transform: translateY(-1px);

@@ -1,5 +1,5 @@
 .search-results {
-  padding: 3rem 0;
+  padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -11,7 +11,7 @@
 
 .pagination {
   margin-top: auto;
-  padding: 0 3.5rem;
+  padding: 0 2.2rem;
 
   &::after {
     content: '';
@@ -31,8 +31,8 @@
 
 .copyright {
   color: $color-grey-dark-2;
-  font-size: 1.2rem;
-  padding: 0 3.5rem;
+  font-size: 0.9rem;
+  padding: 0 2.2rem;
   margin-top: 4rem;
 
   .twitter-link:link,

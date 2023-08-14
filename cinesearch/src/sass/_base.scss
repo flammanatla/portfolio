@@ -39,10 +39,10 @@ $color-grey-light-2: #c6c6c6; // Lighter text
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  // font-size: 62.5%;
 
   @media only screen and (max-width: $bp-medium) {
-    font-size: 50%;
+    font-size: 80%;
   }
 }
 
@@ -61,8 +61,8 @@ body {
 }
 
 .container {
-  max-width: 120rem;
-  min-height: 117rem;
+  max-width: 78.15rem;
+  min-height: 77rem;
   margin: 4vw auto;
   background-color: $color-secondary;
   border: 1px solid $color-border;
@@ -70,16 +70,15 @@ body {
   //box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
 
   display: grid;
-  grid-template-rows: 10rem minmax(100em, auto);
-  // grid-template-rows: 6rem minmax(61.25em, auto);
+  // grid-template-rows: 10rem minmax(100em, auto);
+  grid-template-rows: 6rem minmax(61.25em, auto);
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
     'head head'
-    'list recipe';
+    'list movie';
 
   @media only screen and (max-width: $bp-large) {
     max-width: 100%;
     margin: 0;
-    border-radius: 0;
   }
 }
