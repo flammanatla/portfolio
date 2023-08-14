@@ -1,0 +1,26 @@
+{
+  "name": "cinesearch",
+  "version": "1.0.0",
+  "description": "Movies search app for portfolio",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build --dist-dir ./dist --public-url /portfolio/cinesearch/dist/",
+    "buildlocal": "parcel build --dist-dir ./dist",
+    "clean": "rm -rf ./dist && rm -rf ./.parcel-cache"
+  },
+  "author": "Natalka Moroz",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.9.3",
+    "@parcel/transformer-sass": "^2.9.3",
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "core-js": "^3.31.1",
+    "regenerator-runtime": "^0.13.11"
+  },
+  "alias": {
+    "process": false
+  }
+}
