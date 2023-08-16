@@ -32,12 +32,9 @@
 }
 
 .btn--rectangular {
+  font-size: 0.9rem;
   text-transform: none;
-  display: inline-flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0rem;
   border-radius: 0;
   border: 1px solid $color-border;
   font-weight: 400;
@@ -49,11 +46,22 @@
   }
 }
 
-.btn--accent {
-  font-size: 1rem;
-  padding: 0.6rem 1rem;
+.btn__rate {
+  gap: 1rem;
+  border-top: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn__watchlist {
   color: $color-accent;
-  margin-top: 1.5rem;
+  padding: 0.8rem 0rem;
+
+  &--filled {
+    background-color: $color-accent;
+    color: $color-primary;
+  }
 }
 
 .btn--inline {

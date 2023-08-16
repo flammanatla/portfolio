@@ -2,31 +2,62 @@
   background-color: $color-primary;
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-gap: 2.5rem;
+  grid-gap: 2rem;
+  padding: 2rem;
+
+  &__poster {
+    img {
+      display: block;
+    }
+  }
 
   &__header {
     display: flex;
     justify-content: space-between;
   }
 
-  &__details {
-    margin-top: 2.5rem;
-    margin-right: 2.5rem;
-  }
-
   &__title {
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: 1.125rem;
   }
 
-  &__info-data {
+  &__info {
+    margin-top: 1.5rem;
     font-size: 0.875rem;
+
+    &--tag {
+      color: $color-accent;
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+
+      span {
+        padding: 0.1rem 0.5rem;
+        border: 1px solid $color-border;
+        margin-right: 0.3rem;
+      }
+    }
   }
 
-  &__info-button {
+  &__buttons {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
+  }
+
+  .block {
+    margin-top: 2rem;
+    border: 1px solid $color-border;
+    padding: 1rem;
+
+    h4 {
+      font-size: 0.92rem;
+    }
+    p {
+      margin-top: 0.7rem;
+      font-size: 0.875rem;
+    }
   }
   // ///////////
   // // FIGURE
