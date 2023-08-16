@@ -40,6 +40,16 @@ jobs:
       - name: Clean up
         run: rm -rf ./forkify/node_modules
 
+      # Cinesearch project
+      - name: Install dependencies for the Cinesearch project
+        run: cd cinesearch && npm install
+
+      - name: Build project
+        run: cd cinesearch && npm run build # Replace this with your build command (e.g., parcel build)
+
+      - name: Clean up
+        run: rm -rf ./cinesearch/node_modules
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
