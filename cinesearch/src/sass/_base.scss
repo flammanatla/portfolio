@@ -75,7 +75,7 @@ body {
   grid-template-columns: 0.9fr 2.1fr;
   grid-template-areas:
     'head head'
-    'list movie';
+    'list movie-container';
 
   @media only screen and (max-width: $bp-large) {
     max-width: 100%;

@@ -40,9 +40,9 @@
   font-weight: 400;
 
   svg {
+    fill: $color-accent;
     height: 1.6rem;
     width: 1.6rem;
-    fill: $color-accent;
   }
 }
 
@@ -198,7 +198,8 @@
 .status,
 .message,
 .error {
-  max-width: 40rem;
+  max-width: 30rem;
+  grid-column: 1 / span 2;
   margin: 0 auto;
   padding: 5rem 4rem;
 
