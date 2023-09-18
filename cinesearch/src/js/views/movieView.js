@@ -1,4 +1,5 @@
 import icons from 'url:../../img/icons.svg'; // Parcel 2
+import poster from 'url:../../img/poster-empty.svg'; // Parcel 2
 import View from './View';
 
 class MovieView extends View {
@@ -33,7 +34,9 @@ class MovieView extends View {
     return `
       <div class="movie__poster">
         <figure >
-          <img src="${this._data.poster}" alt="Poster" class="movie__img" />
+          <img src="${
+            this._data.poster === 'N/A' ? poster : this._data.poster
+          }" alt="Poster" class="movie__img" />
         </figure>
         <div class="movie__buttons">
           <button class="btn btn--rectangular btn__watchlist">add to Watchlist</button>
@@ -84,14 +87,30 @@ class MovieView extends View {
         </div>
 
         <div class="movie__awards block">
-          <h4>AWARDS</h4>
+          <h4>AWARDS AND RATINGS</h4>
           <p class="movie__awards movie__awards--description">
-          ${this._data.awards}
+          ${(this._data.awards = 'N/A'
+            ? "This movie hasn't received any awards yet."
+            : this._data.awards)}
           </p>
           <div class="movie__ratings movie__info movie__info--tag">
-            <span>IMDB: ${this._data.ratings[0].Value}</span>
-            <span>Rotten tomatoes: ${this._data.ratings[1].Value}</span>
-            <span>Metacritic: ${this._data.ratings[2].Value}</span>            
+            ${this._data.ratings
+              .map(rating => {
+                let span = '<span>';
+
+                if (rating.Source.includes('Internet Movie Database')) {
+                  span += `IMDB: ${rating.Value}`;
+                } else if (rating.Source.includes('Rotten')) {
+                  span += `Rotten Tomatoes: ${rating.Value}`;
+                } else if (rating.Source.includes('Metacritic')) {
+                  span += `Metacritic: ${rating.Value}`;
+                }
+
+                span += '</span>';
+
+                return span;
+              })
+              .join('')}
           </div>
         </div>
       </div>
