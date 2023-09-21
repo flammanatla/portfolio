@@ -6,6 +6,7 @@ import movieView from './views/movieView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
+import watchlistView from './views/watchlistView.js';
 
 const controlMovies = async function () {
   // get id from address bar
@@ -53,9 +54,32 @@ const controlPagination = async function (goToPage) {
   paginationView.render(model.state.search);
 };
 
+const controlAddToWatchlist = function () {
+  // add or remove movie from watchlist
+  if (!model.state.movie.watchlisted) {
+    model.addToWatchlist(model.state.movie);
+  } else {
+    model.removeFromWatchlist(model.state.movie.id);
+  }
+
+  console.log('model.state.movie', model.state.movie);
+  // update movie view
+  movieView.update(model.state.movie);
+  //movieView.render(model.state.movie);
+
+  // render watchlisted movies
+  watchlistView.render(model.state.watchlist);
+};
+
+const controlWatchlist = function () {
+  watchlistView.render(model.state.watchlist);
+};
+
 const init = function () {
   movieView.addHandlerRender(controlMovies);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  watchlistView.addHandlerRender(controlWatchlist);
+  movieView.addHandlerAddToWatchlist(controlAddToWatchlist);
 };
 init();

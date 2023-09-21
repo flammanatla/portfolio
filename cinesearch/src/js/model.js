@@ -11,12 +11,13 @@ export const state = {
     resultsPerPage: RES_PER_PAGE,
     page: 1,
   },
-  bookmarks: [],
+  watchlist: [],
+  ratings: [],
 };
 
 const createMovieObject = function (data) {
   return {
-    imdbID: data.imdbID,
+    id: data.imdbID,
     poster: data.Poster,
     title: data.Title,
     year: data.Year,
@@ -39,7 +40,14 @@ export const loadMovie = async function (id) {
 
   state.movie = createMovieObject(response);
 
-  console.log(state.movie);
+  if (state.watchlist.some(bookmark => bookmark.id === id)) {
+    state.movie.watchlisted = true;
+  } else {
+    state.movie.watchlisted = false;
+  }
+
+  console.log('state.movie', state.movie);
+  console.log('state.watchlist', state.watchlist);
 };
 
 export const loadSearchResults = async function (query, page = 1) {
@@ -47,8 +55,6 @@ export const loadSearchResults = async function (query, page = 1) {
   const data = await AJAX(
     `${API_URL}?s=${query}&apikey=${API_KEY}&page=${page}`
   );
-
-  console.log(data, query);
 
   state.search.currentPageResults = data.Search.map(movie => {
     return {
@@ -62,17 +68,50 @@ export const loadSearchResults = async function (query, page = 1) {
   state.search.page = page;
 
   state.search.totalResults = Number(data.totalResults);
-
-  console.log(state.search);
 };
 
 export const getSearchResultsPage = async function (page = state.search.page) {
   state.search.page = page;
-  // const start = (page - 1) * state.search.resultsPerPage;
-  // const end = page * state.search.resultsPerPage;
-  // return state.search.currentPageResults.slice(start, end);
+
   if (state.search.query) {
     await loadSearchResults(state.search.query, page);
   }
   return state.search.currentPageResults;
 };
+
+const persistWatchlist = function () {
+  localStorage.setItem('watchlist', JSON.stringify(state.watchlist));
+};
+
+export const addToWatchlist = function (movie) {
+  // add to watchlist
+  state.watchlist.push(movie);
+
+  // mark curr movie as watchlisted
+  if (movie.id == state.movie.id) {
+    state.movie.watchlisted = true;
+  }
+
+  persistWatchlist();
+};
+
+export const removeFromWatchlist = function (id) {
+  const index = state.watchlist.findIndex(el => el.id === id);
+  state.watchlist.splice(index, 1);
+
+  // unlist the movie
+  if (id == state.movie.id) {
+    state.movie.watchlisted = false;
+  }
+
+  persistWatchlist();
+};
+
+const init = function () {
+  const storage = localStorage.getItem('watchlist');
+
+  if (storage) {
+    state.watchlist = JSON.parse(storage);
+  }
+};
+init();

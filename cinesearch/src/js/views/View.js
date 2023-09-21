@@ -37,17 +37,18 @@ export default class View {
 
   update(data) {
     this._data = data;
+
     const newMarkup = this._generateMarkup();
 
     // create "virtual" DOM out of the markup string
     const newDOM = document.createRange().createContextualFragment(newMarkup);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
-    const currElements = Array.from(this._parentElement.querySelectorAll('*'));
+    const currElements = Array.from(this._currentElement.querySelectorAll('*'));
 
     newElements.forEach((newEl, i) => {
       const curEl = currElements[i];
 
-      // updates changed TEXT (number of serving and quantity)
+      // updates changed TEXT
       if (
         !newEl.isEqualNode(curEl) &&
         newEl.firstChild?.nodeValue.trim() !== ''
