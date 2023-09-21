@@ -20,6 +20,7 @@ export default class View {
       return; //this.renderError();
     }
 
+    console.log(data);
     this._data = data;
     const markup = this._generateMarkup();
 

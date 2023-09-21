@@ -28,8 +28,6 @@ export const AJAX = async function (url) {
     );
   }
 
-  console.log(data);
-
   if (data.Response == 'False') {
     throw new Error(`&{data.Error}`);
   }

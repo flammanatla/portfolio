@@ -6,7 +6,8 @@ export const state = {
   movie: {},
   search: {
     query: '',
-    results: [],
+    currentPageResults: [],
+    totalResults: 1,
     resultsPerPage: RES_PER_PAGE,
     page: 1,
   },
@@ -21,8 +22,11 @@ const createMovieObject = function (data) {
     year: data.Year,
     genre: data.Genre,
     director: data.Director,
+    writer: data.Writer,
     stars: data.Actors,
     language: data.Language,
+    country: data.Country,
+    runtime: data.Runtime,
     plot: data.Plot,
     awards: data.Awards,
     ratings: data.Ratings,
@@ -38,13 +42,15 @@ export const loadMovie = async function (id) {
   console.log(state.movie);
 };
 
-export const loadSearchResults = async function (query) {
+export const loadSearchResults = async function (query, page = 1) {
   state.search.query = query;
-  const data = await AJAX(`${API_URL}?s=${query}&apikey=${API_KEY}`);
+  const data = await AJAX(
+    `${API_URL}?s=${query}&apikey=${API_KEY}&page=${page}`
+  );
 
-  console.log(data);
+  console.log(data, query);
 
-  state.search.results = data.Search.map(movie => {
+  state.search.currentPageResults = data.Search.map(movie => {
     return {
       id: movie.imdbID,
       poster: movie.Poster,
@@ -53,14 +59,20 @@ export const loadSearchResults = async function (query) {
       type: movie.Type,
     };
   });
-  state.search.page = 1;
+  state.search.page = page;
 
-  console.log(state.search.results);
+  state.search.totalResults = Number(data.totalResults);
+
+  console.log(state.search);
 };
 
-export const getSearchResultsPage = function (page = state.search.page) {
+export const getSearchResultsPage = async function (page = state.search.page) {
   state.search.page = page;
-  const start = (page - 1) * state.search.resultsPerPage;
-  const end = page * state.search.resultsPerPage;
-  return state.search.results.slice(start, end);
+  // const start = (page - 1) * state.search.resultsPerPage;
+  // const end = page * state.search.resultsPerPage;
+  // return state.search.currentPageResults.slice(start, end);
+  if (state.search.query) {
+    await loadSearchResults(state.search.query, page);
+  }
+  return state.search.currentPageResults;
 };

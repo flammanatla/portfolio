@@ -65,14 +65,23 @@ class MovieView extends View {
               .join('')}
             </div>
             <div class="movie__info">
+            <div class="">
+                Runtime: ${this._data.runtime}
+              </div>
               <div class="">
                 Director: ${this._data.director}
+              </div>
+              <div class="">
+                Writer: ${this._data.writer}
               </div>
               <div class="">
                 Stars: ${this._data.stars}
               </div>
               <div class="">
                 Language: ${this._data.language}
+              </div>
+              <div class="">
+                Country: ${this._data.country}
               </div>
           </div>
 
@@ -89,9 +98,11 @@ class MovieView extends View {
         <div class="movie__awards block">
           <h4>AWARDS AND RATINGS</h4>
           <p class="movie__awards movie__awards--description">
-          ${(this._data.awards = 'N/A'
-            ? "This movie hasn't received any awards yet."
-            : this._data.awards)}
+          ${
+            this._data.awards === 'N/A'
+              ? "This movie hasn't received any awards yet."
+              : this._data.awards
+          }
           </p>
           <div class="movie__ratings movie__info movie__info--tag">
             ${this._data.ratings
@@ -118,7 +129,7 @@ class MovieView extends View {
   }
 
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(event =>
+    ['hashchange', 'popstate', 'load'].forEach(event =>
       window.addEventListener(event, handler)
     );
   }
