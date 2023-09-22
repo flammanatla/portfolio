@@ -54,12 +54,12 @@
   &__data {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 2rem;
+    grid-template-columns: 1fr 4rem;
     align-items: center;
   }
 
   &__title {
-    grid-column: 1/-1;
+    grid-column: 1;
     font-size: 0.875rem;
     color: $color-grey-light-1;
     text-transform: uppercase;
@@ -74,7 +74,7 @@
 
   &__year,
   &__type {
-    grid-column: 1/-1;
+    grid-column: 1;
     font-size: 0.75rem;
     color: $color-grey-light-1;
     font-weight: 600;
@@ -82,5 +82,22 @@
 
   &__type {
     color: $color-grey-light-2;
+  }
+
+  &__user-generated {
+    background-color: darken($color-accent, 2%);
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 10rem;
+
+    margin-left: 1rem;
+
+    grid-column: 2;
+    grid-row: 1 / span 3;
   }
 }

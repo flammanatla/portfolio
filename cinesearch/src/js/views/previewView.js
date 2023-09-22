@@ -7,8 +7,8 @@ class PreviewView extends View {
   _generateMarkup() {
     const id = window.location.hash.slice(1);
 
-    console.log('this._data', this._data);
-    console.log('id', id);
+    // console.log('this._data', this._data);
+    // console.log('id', id);
 
     return `
     <li class="preview">
@@ -24,6 +24,11 @@ class PreviewView extends View {
           <h4 class="preview__title">${this._data.title}</h4>
           <p class="preview__year">${this._data.year}</p>
           <p class="preview__type">${this._data.type}</p>
+          <div class="preview__user-generated ${
+            this._data.ratingByUser ? '' : 'hidden'
+          }">
+          ${this._data.ratingByUser}
+          </div>
         </div>
       </a>
     </li>

@@ -7,6 +7,7 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import watchlistView from './views/watchlistView.js';
+import ratedListView from './views/ratedListView.js';
 
 const controlMovies = async function () {
   // get id from address bar
@@ -27,6 +28,8 @@ const controlMovies = async function () {
 
   // rendering a movie
   movieView.render(model.state.movie);
+
+  movieView.addHandlerAddToRatings(controlAddToRatings);
 };
 
 const controlSearchResults = async function () {
@@ -62,7 +65,6 @@ const controlAddToWatchlist = function () {
     model.removeFromWatchlist(model.state.movie.id);
   }
 
-  console.log('model.state.movie', model.state.movie);
   // update movie view
   movieView.update(model.state.movie);
   //movieView.render(model.state.movie);
@@ -75,11 +77,48 @@ const controlWatchlist = function () {
   watchlistView.render(model.state.watchlist);
 };
 
+const controlAddToRatings = function (rating) {
+  // add movie to rated movies list
+  console.log('model.state.movie.ratedByUser', model.state.movie.ratedByUser);
+  model.addToRatings(model.state.movie, rating);
+
+  // if (!model.state.movie.ratedByUser) {
+  //   model.addToRatings(model.state.movie, rating);
+  // } else {
+  //   model.removeFromRatings(model.state.movie.id);
+  // }
+
+  console.log('model.state.movie', model.state.movie);
+  // update movie view
+  movieView.update(model.state.movie);
+
+  // render rated movies
+  ratedListView.render(model.state.ratingsByUser);
+};
+
+const controlRemoveFromRatings = function () {
+  model.removeFromRatings(model.state.movie.id);
+
+  movieView.update(model.state.movie);
+
+  console.log('model.state.ratingsByUser', model.state.ratingsByUser);
+  ratedListView.render(model.state.ratingsByUser, true, true);
+};
+
+const controlRatings = function () {
+  ratedListView.render(model.state.ratingsByUser);
+};
+
 const init = function () {
   movieView.addHandlerRender(controlMovies);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+
   watchlistView.addHandlerRender(controlWatchlist);
   movieView.addHandlerAddToWatchlist(controlAddToWatchlist);
+
+  ratedListView.addHandlerRender(controlRatings);
+  // movieView.addHandlerShowRatingInput();
+  movieView.addHandlerShowRatingInput(controlRemoveFromRatings);
 };
 init();

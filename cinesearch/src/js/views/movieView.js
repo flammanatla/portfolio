@@ -31,6 +31,7 @@ class MovieView extends View {
   }
 
   _generateMarkup() {
+    // console.log(this._data.ratedByUser, this._data.ratingByUser, this._data);
     return `
         <div class="movie__poster">
           <figure >
@@ -42,12 +43,20 @@ class MovieView extends View {
             <button class="btn btn--rectangular btn__watchlist">${
               this._data.watchlisted ? 'Watchlisted' : 'add to Watchlist'
             }</button>
-            <button class="btn btn--rectangular btn__rate"> 
-              <svg>
-                <use href="${icons}#icon-star"></use>
-              </svg>
-              Rate
-            </button>
+              <button class="btn btn--rectangular btn__rate"> 
+                <svg>
+                  <use href="${icons}#icon-star${
+      this._data.ratedByUser ? '-fill' : ' '
+    }
+                  "></use>
+                </svg> 
+                <div class="btn__rate--label">
+                  ${this._data.ratedByUser ? this._data.ratingByUser : 'Rate'}
+                </div>
+                <form>
+                <input type="number" class="btn__rate--input hidden" min="1" max="10">
+                </form>
+              </button>
           </div>
         </div>
 
@@ -143,6 +152,61 @@ class MovieView extends View {
       if (!btn) return;
 
       handler();
+    });
+  }
+
+  addHandlerShowRatingInput(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btnContainer = e.target.closest('.btn__rate');
+
+      if (!btnContainer) return;
+
+      const ratingLabel = btnContainer.querySelector('.btn__rate--label');
+      const ratingInput = btnContainer.querySelector('.btn__rate--input');
+
+      if (ratingLabel.innerText !== 'Rate') {
+        handler();
+        return;
+      }
+
+      if (ratingInput.classList.contains('hidden')) {
+        // if (ratingLabel.textContent === 'Rate') {
+        ratingLabel.classList.add('hidden');
+        ratingInput.classList.remove('hidden');
+        ratingInput.value = '';
+        ratingInput.focus();
+        // }
+      }
+    });
+  }
+
+  addHandlerAddToRatings(handler) {
+    const ratingForm = this._parentElement.querySelector('form');
+    console.log(
+      document.querySelector('.movie-container').querySelector('input')
+    );
+
+    ratingForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      console.log('here');
+
+      const btnContainer = e.target.closest('.btn__rate');
+
+      if (!btnContainer) return;
+
+      const ratingLabel = btnContainer.querySelector('.btn__rate--label');
+      const ratingInput = btnContainer.querySelector('.btn__rate--input');
+
+      const ratingValue = parseInt(ratingInput.value, 10);
+      if (ratingValue >= 1 && ratingValue <= 10) {
+        ratingLabel.innerText = ratingValue;
+      }
+
+      ratingLabel.classList.remove('hidden');
+      ratingInput.classList.add('hidden');
+
+      console.log(ratingValue);
+      handler(ratingValue);
     });
   }
 }

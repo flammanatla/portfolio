@@ -15,12 +15,14 @@ export default class View {
    * @returns {undefined | string} A markup string is returned if render = false
    * @this {object} View instance
    */
-  render(data, render = true) {
-    if (!data || (Array.isArray(data) && data.length === 0)) {
-      return; //this.renderError();
+  render(data, render = true, forceRender = false) {
+    if (!forceRender) {
+      if (!data || (Array.isArray(data) && data.length === 0)) {
+        return; //this.renderError();
+      }
     }
 
-    console.log(data);
+    // console.log(data);
     this._data = data;
     const markup = this._generateMarkup();
 

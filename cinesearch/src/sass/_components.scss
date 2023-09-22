@@ -52,6 +52,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    border-top: 1px solid $color-border;
+  }
 }
 
 .btn__watchlist {

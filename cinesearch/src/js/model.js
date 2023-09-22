@@ -12,7 +12,7 @@ export const state = {
     page: 1,
   },
   watchlist: [],
-  ratings: [],
+  ratingsByUser: [],
 };
 
 const createMovieObject = function (data) {
@@ -40,14 +40,20 @@ export const loadMovie = async function (id) {
 
   state.movie = createMovieObject(response);
 
-  if (state.watchlist.some(bookmark => bookmark.id === id)) {
+  if (state.watchlist.some(item => item.id === id)) {
     state.movie.watchlisted = true;
   } else {
     state.movie.watchlisted = false;
   }
 
-  console.log('state.movie', state.movie);
-  console.log('state.watchlist', state.watchlist);
+  if (state.ratingsByUser.some(item => item.id === id)) {
+    state.movie.ratedByUser = true;
+    state.movie.ratingByUser = state.ratingsByUser.find(
+      item => item.id === id
+    ).ratingByUser;
+  } else {
+    state.movie.ratedByUser = false;
+  }
 };
 
 export const loadSearchResults = async function (query, page = 1) {
@@ -79,8 +85,15 @@ export const getSearchResultsPage = async function (page = state.search.page) {
   return state.search.currentPageResults;
 };
 
-const persistWatchlist = function () {
-  localStorage.setItem('watchlist', JSON.stringify(state.watchlist));
+// add to, remove, store and restore watchlist from localStorage
+const persistList = function (type) {
+  if (type === 'watchlist') {
+    localStorage.setItem('watchlist', JSON.stringify(state.watchlist));
+  }
+
+  if (type === 'ratingsByUser') {
+    localStorage.setItem('ratingsByUser', JSON.stringify(state.ratingsByUser));
+  }
 };
 
 export const addToWatchlist = function (movie) {
@@ -88,11 +101,11 @@ export const addToWatchlist = function (movie) {
   state.watchlist.push(movie);
 
   // mark curr movie as watchlisted
-  if (movie.id == state.movie.id) {
+  if (movie.id === state.movie.id) {
     state.movie.watchlisted = true;
   }
 
-  persistWatchlist();
+  persistList('watchlist');
 };
 
 export const removeFromWatchlist = function (id) {
@@ -100,18 +113,49 @@ export const removeFromWatchlist = function (id) {
   state.watchlist.splice(index, 1);
 
   // unlist the movie
-  if (id == state.movie.id) {
+  if (id === state.movie.id) {
     state.movie.watchlisted = false;
   }
 
-  persistWatchlist();
+  persistList('watchlist');
+};
+
+export const addToRatings = function (movie, rating) {
+  // add to rated movies list
+  state.ratingsByUser.push(movie);
+
+  // mark curr movie as rated
+  if (movie.id === state.movie.id) {
+    state.movie.ratedByUser = true;
+    state.movie.ratingByUser = rating;
+  }
+
+  persistList('ratingsByUser');
+};
+
+export const removeFromRatings = function (id) {
+  const index = state.ratingsByUser.findIndex(el => el.id === id);
+  state.ratingsByUser.splice(index, 1);
+
+  // unlist the movie
+  if (id === state.movie.id) {
+    state.movie.ratedByUser = false;
+    state.movie.ratingByUser = '';
+  }
+
+  persistList('ratingsByUser');
 };
 
 const init = function () {
-  const storage = localStorage.getItem('watchlist');
+  const storageWatchlist = localStorage.getItem('watchlist');
+  const storageRatings = localStorage.getItem('ratingsByUser');
 
-  if (storage) {
-    state.watchlist = JSON.parse(storage);
+  if (storageWatchlist) {
+    state.watchlist = JSON.parse(storageWatchlist);
+  }
+
+  if (storageRatings) {
+    state.ratingsByUser = JSON.parse(storageRatings);
   }
 };
 init();
