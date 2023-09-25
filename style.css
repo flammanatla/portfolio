@@ -71,7 +71,8 @@ body {
   font-weight: 400;
 }
 
-.preview__tech {
+.preview__tech,
+.preview__type {
   font-family: 'Inconsolata';
   font-weight: 400;
 
@@ -82,8 +83,13 @@ body {
   gap: 0.5rem;
 }
 
-.preview__tech span {
+.preview__tech span,
+.preview__type span {
   background: rgb(219, 237, 219);
   padding: 0.25rem 1rem;
   border-radius: 4px;
+}
+
+.preview__type span {
+  background: rgb(237, 219, 222);
 }

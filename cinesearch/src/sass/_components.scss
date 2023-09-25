@@ -69,25 +69,11 @@
     }
 
     input[type='number']::-webkit-inner-spin-button,
-    input[type='number']::-webkit-outer-spin-button {
+    input[type='number']::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
-      background-color: transparent;
     }
   }
-
-  // /* Hide the default up and down buttons */
-
-  // /* Hide the arrow icons in IE and Firefox */
-  // .number-input[type="number"] {
-  //   -moz-appearance: textfield;
-  // }
-
-  // /* Set transparent background for the up and down buttons */
-  // .number-input::-webkit-inner-spin-button,
-  // .number-input::-webkit-outer-spin-button {
-  //   background-color: transparent;
-  // }
 }
 
 .btn__watchlist {
