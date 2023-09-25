@@ -32,12 +32,13 @@
 }
 
 .btn--rectangular {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   text-transform: none;
   padding: 0.5rem 0rem;
   border-radius: 0;
   border: 1px solid $color-border;
   font-weight: 400;
+  min-height: 50px;
 
   svg {
     fill: $color-accent;
