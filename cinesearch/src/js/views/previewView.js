@@ -7,9 +7,6 @@ class PreviewView extends View {
   _generateMarkup() {
     const id = window.location.hash.slice(1);
 
-    // console.log('this._data', this._data);
-    // console.log('id', id);
-
     return `
     <li class="preview">
       <a class="preview__link ${

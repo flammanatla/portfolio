@@ -7,7 +7,7 @@ class ResultsView extends View {
     'No movies found for your query! Please search for something else';
 
   _generateMarkup() {
-    return this._data.map(result => previewView.render(result, false)).join('');
+    return this._data.map(item => previewView.render(item, false)).join('');
   }
 }
 

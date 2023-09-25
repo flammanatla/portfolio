@@ -22,7 +22,6 @@ export default class View {
       }
     }
 
-    // console.log(data);
     this._data = data;
     const markup = this._generateMarkup();
 
@@ -31,11 +30,6 @@ export default class View {
     this.#clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
-
-  // generateMarkup(data) {
-  //   this._data = data;
-  //   return this._generateMarkup();
-  // }
 
   update(data) {
     this._data = data;
