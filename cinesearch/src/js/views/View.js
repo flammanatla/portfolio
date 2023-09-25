@@ -1,4 +1,3 @@
-import icons from 'url:../../img/icons.svg';
 import spinner from 'bundle-text:../../img/spinner.svg';
 
 export default class View {
@@ -10,25 +9,41 @@ export default class View {
 
   /**
    * Render the received object to the DOM
-   * @param {Object | Object[]} data The data to be rendered (e.g recipe)
+   * @param {Object | Object[]} data The data to be rendered (e.g movie)
    * @param {boolean} [render = true] If false, create markup string instead of rendering to the DOM
    * @returns {undefined | string} A markup string is returned if render = false
    * @this {object} View instance
    */
-  render(data, render = true, forceRender = false) {
-    if (!forceRender) {
-      if (!data || (Array.isArray(data) && data.length === 0)) {
-        return; //this.renderError();
-      }
-    }
-
+  render(data, render = true) {
     this._data = data;
     const markup = this._generateMarkup();
 
     if (!render) return markup;
 
-    this.#clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    // if array is empty, show status and hide data section
+    if (!data || (Array.isArray(data) && data.length === 0)) {
+      this.setStatusVisibility(true);
+      this.setDataVisibility(false);
+      return;
+    }
+
+    this.setStatusVisibility(false);
+    this.setDataVisibility(true);
+
+    this._currentElement.innerHTML = '';
+    this._currentElement.innerHTML = markup;
+  }
+
+  setStatusVisibility(flag) {
+    flag
+      ? this._statusElement.classList.remove('hidden')
+      : this._statusElement.classList.add('hidden');
+  }
+
+  setDataVisibility(flag) {
+    flag
+      ? this._currentElement.classList.remove('hidden')
+      : this._currentElement.classList.add('hidden');
   }
 
   update(data) {
@@ -60,48 +75,4 @@ export default class View {
       }
     });
   }
-
-  // // spinner sits in separate svg file and loaded inline as a string
-  // // otherwise svg stack was too heavy and when network was slow, spinner loaded slower than recipe itself
-  // renderSpinner() {
-  //   const markup = `
-  //     <div class="spinner">
-  //       ${spinner}
-  //     </div>
-  //   `;
-
-  //   this.#clear();
-  //   this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  // }
-
-  // renderError(message = this._errorMsg) {
-  //   const markup = `
-  //     <div class="error">
-  //       <div>
-  //         <svg>
-  //           <use href="${icons}#icon-alert-triangle"></use>
-  //         </svg>
-  //       </div>
-  //       <p>${message}</p>
-  //     </div>
-  //   `;
-  //   this.#clear();
-  //   this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  // }
-
-  // renderMessage(message = this._msg) {
-  //   const markup = `
-  //     <div class="message">
-  //       <div>
-  //         <svg>
-  //           <use href="${icons}.svg#icon-smile"></use>
-  //         </svg>
-  //       </div>
-  //       <p>${message}</p>
-  //     </div>
-  //   `;
-
-  //   this.#clear();
-  //   this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  // }
 }

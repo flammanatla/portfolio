@@ -6,7 +6,7 @@ export const state = {
   movie: {},
   search: {
     query: '',
-    currentPageResults: [],
+    currentPageResults: null,
     totalResults: 1,
     resultsPerPage: RES_PER_PAGE,
     page: 1,
@@ -57,23 +57,29 @@ export const loadMovie = async function (id) {
 };
 
 export const loadSearchResults = async function (query, page = 1) {
-  state.search.query = query;
-  const data = await AJAX(
-    `${API_URL}?s=${query}&apikey=${API_KEY}&page=${page}`
-  );
+  try {
+    state.search.query = query;
+    const data = await AJAX(
+      `${API_URL}?s=${query}&apikey=${API_KEY}&page=${page}`
+    );
 
-  state.search.currentPageResults = data.Search.map(movie => {
-    return {
-      id: movie.imdbID,
-      poster: movie.Poster,
-      title: movie.Title,
-      year: movie.Year,
-      type: movie.Type,
-    };
-  });
-  state.search.page = page;
+    state.search.currentPageResults = data.Search.map(movie => {
+      return {
+        id: movie.imdbID,
+        poster: movie.Poster,
+        title: movie.Title,
+        year: movie.Year,
+        type: movie.Type,
+      };
+    });
+    state.search.page = page;
 
-  state.search.totalResults = Number(data.totalResults);
+    state.search.totalResults = Number(data.totalResults);
+  } catch (err) {
+    state.search.currentPageResults = [];
+    state.search.page = 1;
+    state.search.totalResults = 0;
+  }
 };
 
 export const getSearchResultsPage = async function (page = state.search.page) {

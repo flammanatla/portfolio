@@ -8,30 +8,7 @@ class MovieView extends View {
   _statusElement = this._parentElement.querySelector('.status');
   _data;
 
-  render(data) {
-    this._data = data;
-
-    this.setStatusVisibility(false);
-    this.setMovieVisibility(true);
-
-    this._currentElement.innerHTML = '';
-    this._currentElement.innerHTML = this._generateMarkup();
-  }
-
-  setStatusVisibility(flag) {
-    flag
-      ? this._statusElement.classList.remove('hidden')
-      : this._statusElement.classList.add('hidden');
-  }
-
-  setMovieVisibility(flag) {
-    flag
-      ? this._currentElement.classList.remove('hidden')
-      : this._currentElement.classList.add('hidden');
-  }
-
   _generateMarkup() {
-    // console.log(this._data.ratedByUser, this._data.ratingByUser, this._data);
     return `
         <div class="movie__poster">
           <figure >
@@ -140,6 +117,8 @@ class MovieView extends View {
   }
 
   addHandlerRender(handler) {
+    // popstate used to capture changes in the URL (back/forward navigation in browser
+    // and trigger actions based on updated URL params)
     ['hashchange', 'popstate', 'load'].forEach(event =>
       window.addEventListener(event, handler)
     );
@@ -170,25 +149,19 @@ class MovieView extends View {
       }
 
       if (ratingInput.classList.contains('hidden')) {
-        // if (ratingLabel.textContent === 'Rate') {
         ratingLabel.classList.add('hidden');
         ratingInput.classList.remove('hidden');
         ratingInput.value = '';
         ratingInput.focus();
-        // }
       }
     });
   }
 
   addHandlerAddToRatings(handler) {
     const ratingForm = this._parentElement.querySelector('form');
-    console.log(
-      document.querySelector('.movie-container').querySelector('input')
-    );
 
     ratingForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      console.log('here');
 
       const btnContainer = e.target.closest('.btn__rate');
 
@@ -205,7 +178,6 @@ class MovieView extends View {
       ratingLabel.classList.remove('hidden');
       ratingInput.classList.add('hidden');
 
-      console.log(ratingValue);
       handler(ratingValue);
     });
   }

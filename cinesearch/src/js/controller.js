@@ -18,7 +18,13 @@ const controlMovies = async function () {
   model.state.search.query = url.searchParams.get('q');
 
   // render results
-  resultsView.render(await model.getSearchResultsPage());
+  const searchResults = await model.getSearchResultsPage();
+  if (searchResults) {
+    resultsView.render(searchResults);
+  }
+
+  // render initial pagination buttons
+  paginationView.render(model.state.search);
 
   // if movieId not entered, do not load and render movie info
   if (!id) return;
@@ -29,12 +35,19 @@ const controlMovies = async function () {
   // rendering a movie
   movieView.render(model.state.movie);
 
+  // add movie to rated list once rate is submitted
+  // impossible to move to init() because rate form is hidden on the very beginning
+  // and it is impossiblt to attach eventListener to hidden element
   movieView.addHandlerAddToRatings(controlAddToRatings);
+
+  // render rated movies
+  ratedListView.render(model.state.ratingsByUser);
+
+  // render watchlisted movies
+  watchlistView.render(model.state.watchlist);
 };
 
 const controlSearchResults = async function () {
-  //resultsView.renderSpinner();
-
   // get search query
   const query = searchView.getQuery();
   if (!query) return;
@@ -67,28 +80,20 @@ const controlAddToWatchlist = function () {
 
   // update movie view
   movieView.update(model.state.movie);
-  //movieView.render(model.state.movie);
 
   // render watchlisted movies
   watchlistView.render(model.state.watchlist);
 };
 
 const controlWatchlist = function () {
+  // render watchlisted movies
   watchlistView.render(model.state.watchlist);
 };
 
 const controlAddToRatings = function (rating) {
   // add movie to rated movies list
-  console.log('model.state.movie.ratedByUser', model.state.movie.ratedByUser);
   model.addToRatings(model.state.movie, rating);
 
-  // if (!model.state.movie.ratedByUser) {
-  //   model.addToRatings(model.state.movie, rating);
-  // } else {
-  //   model.removeFromRatings(model.state.movie.id);
-  // }
-
-  console.log('model.state.movie', model.state.movie);
   // update movie view
   movieView.update(model.state.movie);
 
@@ -97,12 +102,12 @@ const controlAddToRatings = function (rating) {
 };
 
 const controlRemoveFromRatings = function () {
+  // remove movie from rated list by id
   model.removeFromRatings(model.state.movie.id);
 
   movieView.update(model.state.movie);
 
-  console.log('model.state.ratingsByUser', model.state.ratingsByUser);
-  ratedListView.render(model.state.ratingsByUser, true, true);
+  ratedListView.render(model.state.ratingsByUser);
 };
 
 const controlRatings = function () {
@@ -110,15 +115,25 @@ const controlRatings = function () {
 };
 
 const init = function () {
+  // load movie data once URL is changed
   movieView.addHandlerRender(controlMovies);
+
+  // search once search query is entered
   searchView.addHandlerSearch(controlSearchResults);
+
+  // update pagination once user is moving forward/backward
   paginationView.addHandlerClick(controlPagination);
 
+  //render watchlist window once Watchlist button is hovered
   watchlistView.addHandlerRender(controlWatchlist);
+
+  // add movie to watchlist when button is clicked
   movieView.addHandlerAddToWatchlist(controlAddToWatchlist);
 
+  //render ratings window once Rating button is hovered
   ratedListView.addHandlerRender(controlRatings);
-  // movieView.addHandlerShowRatingInput();
+
+  // show rating input OR call handler to remove rating
   movieView.addHandlerShowRatingInput(controlRemoveFromRatings);
 };
 init();

@@ -16,7 +16,6 @@
       src="https://kit.fontawesome.com/128a745861.js"
       crossorigin="anonymous"
     ></script>
-
     <title>cineSearch // Search over 300,000 movies</title>
   </head>
 
@@ -53,17 +52,19 @@
                 </svg>
                 <span>Ratings</span>
               </button>
-              <div class="ratings">
-                <ul class="ratings__list">
-                  <div class="message">
-                    <div>
-                      <svg>
-                        <use href="src/img/icons.svg#icon-smile"></use>
-                      </svg>
-                    </div>
-                    <p>No rated movies yet. Find a nice movie and rate it :)</p>
+              <div class="ratings-container">
+                <div class="status">
+                  <div>
+                    <svg>
+                      <use href="src/img/icons.svg#icon-smile"></use>
+                    </svg>
                   </div>
-                </ul>
+                  <p>No rated movies yet. Find a nice movie and rate it :)</p>
+                </div>
+                <div class="ratings">
+                  <ul class="ratings__list">
+                  </ul>
+                </div>
               </div>
             </li>
             <li class="nav__item">
@@ -73,17 +74,19 @@
                 </svg>
                 <span>Watchlist</span>
               </button>
-              <div class="watchlist">
-                <ul class="watchlist__list">
-                  <div class="message">
-                    <div>
-                      <svg>
-                        <use href="src/img/icons.svg#icon-smile"></use>
-                      </svg>
-                    </div>
-                    <p>No movies in watchlist yet.</p>
+              <div class="watchlist-container">
+                <div class="status">
+                  <div>
+                    <svg>
+                      <use href="src/img/icons.svg#icon-smile"></use>
+                    </svg>
                   </div>
-                </ul>
+                  <p>No movies in watchlist yet.</p>
+                </div>
+                <div class="watchlist">
+                  <ul class="watchlist__list">
+                  </ul>
+                </div>
               </div>
             </li>
           </ul>
@@ -91,8 +94,19 @@
       </header>
 
       <div class="search-results">
-        <ul class="results">
-        </ul>
+        <div class="status hidden">
+          <div>
+            <svg>
+              <use href="src/img/icons.svg#icon-alert-triangle"></use>
+            </svg>
+          </div>
+          <p>No movies found for your query! Please search for something else.</p>
+        </div>
+        <div class="results">
+          <ul class="results__list">
+          </ul>
+        </div>
+       
 
         <div class="pagination">
         </div>

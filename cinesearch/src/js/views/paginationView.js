@@ -2,7 +2,9 @@ import View from './View.js';
 import icons from 'url:../../img/icons.svg';
 
 class PaginationView extends View {
-  _parentElement = document.querySelector('.pagination');
+  _parentElement = document.querySelector('.search-results');
+  _statusElement = this._parentElement.querySelector('.status');
+  _currentElement = this._parentElement.querySelector('.pagination');
 
   _generateMarkup() {
     const currentPage = this._data.page;
