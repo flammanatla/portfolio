@@ -23,12 +23,12 @@ a {
 button {
   cursor: pointer;
 }
- 
+
 input {
   -webkit-appearance: none;
   width: 100%;
 }
- 
+
 button,
 input {
   border: none;
@@ -48,7 +48,7 @@ ul {
 }
 
 body {
-  font: 1rem/1.3 "Arial", sans-serif;
+  font: 1rem/1.3 'Arial', sans-serif;
   background: var(--bg_main);
   color: var(--text_dark);
   padding: 30px;
@@ -86,15 +86,17 @@ body {
 }
 
 .top-banner form input::-moz-placeholder {
-  color: currentColor; 
+  color: currentColor;
 }
 
 .top-banner form input:-ms-input-placeholder {
-  color: currentColor; 
+  color: currentColor;
 }
 
 .top-banner form input::placeholder {
-  color: currentColor; 
+  color: currentColor;
+  opacity: 0.5;
+  font-size: 1.5rem;
 }
 
 .top-banner form button {
@@ -184,7 +186,7 @@ body {
   body {
     padding: 30px;
   }
-  
+
   .response-section .cities {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -195,17 +197,17 @@ body {
   .response-section .city-temp {
     font-size: 3rem;
   }
-  
+
   .response-section {
     margin-top: 20px;
   }
-  
+
   .top-banner form {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
   }
-  
+
   .top-banner form input,
   .top-banner form button {
     width: 100%;
@@ -214,7 +216,7 @@ body {
   .top-banner form button {
     margin: 20px 0 0 0;
   }
-  
+
   .top-banner form .msg {
     position: static;
     max-width: none;
@@ -231,7 +233,7 @@ body {
   body {
     padding: 15px;
   }
-  
+
   .response-section .cities {
     grid-template-columns: repeat(1, 1fr);
   }

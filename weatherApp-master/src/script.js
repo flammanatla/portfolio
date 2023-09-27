@@ -1,10 +1,13 @@
 'use strict';
 
+// config
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const API_KEY = '71b88dd3f450be928f50470ac26c6840';
+
 const form = document.querySelector('.top-banner form');
 const input = document.querySelector('.top-banner input');
 const list = document.querySelector('.response-section .cities');
-
-const apiKey = '71b88dd3f450be928f50470ac26c6840';
+const msg = document.querySelector('.top-banner .msg');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -21,19 +24,19 @@ form.addEventListener('submit', e => {
           inputVal = inputVal.split(',')[0];
           const content = element
             .querySelector('.city-name span')
-            .textContent.toLowercase();
+            .textContent.toLowerCase();
           return inputVal === content;
         } else {
           const cityData = element
             .querySelector('.city-name')
-            .dataset.name.toLowercase();
-          return inputVal.toLowercase() === cityData;
+            .dataset.name.toLowerCase();
+          return inputVal.toLowerCase() === cityData;
         }
       } else {
         const cityName = element
           .querySelector('.city-name span')
-          .textContent.toLowercase();
-        return inputVal.toLowercase() === cityName;
+          .textContent.toLowerCase();
+        return inputVal.toLowerCase() === cityName;
       }
     });
 
@@ -45,7 +48,7 @@ form.addEventListener('submit', e => {
     }
   }
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
+  const url = `${API_URL}?q=${inputVal}&appid=${API_KEY}&units=metric`;
 
   fetch(url)
     .then(response => response.json())

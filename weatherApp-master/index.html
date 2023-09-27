@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <section class="top-banner">
       <div class="container">
         <h1 class="heading">Weather App</h1>
         <form>
-          <input type="text" placeholder="Search for a city" autofocus />
+          <input
+            type="text"
+            placeholder="Search for a city using 'cityName' or 'cityName, countryCode'"
+            autofocus
+          />
           <button type="submit">SUBMIT</button>
           <span class="msg"></span>
         </form>
@@ -21,6 +25,6 @@
         <ul class="cities"></ul>
       </div>
     </section>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="src/script.js"></script>
   </body>
 </html>
