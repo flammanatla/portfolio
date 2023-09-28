@@ -7,13 +7,15 @@
     "start": "parcel",
     "build": "parcel build --dist-dir ./dist --public-url /portfolio/cinesearch/dist/",
     "buildlocal": "parcel build --dist-dir ./dist",
-    "clean": "rm -rf ./dist && rm -rf ./.parcel-cache"
+    "clean": "rm -rf ./dist && rm -rf ./.parcel-cache",
+    "lint": "npx eslint ./src/js/controller.js"
   },
   "author": "Natalka Moroz",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-inline-string": "^2.9.3",
     "@parcel/transformer-sass": "^2.9.3",
+    "eslint": "^8.50.0",
     "parcel": "^2.9.3"
   },
   "dependencies": {
