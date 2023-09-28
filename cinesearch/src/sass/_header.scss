@@ -20,7 +20,7 @@
   transition: all 0.3s;
 
   &:focus-within {
-    transform: translateY(-2px);
+    // transform: translateY(-2px);
     box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
   }
 

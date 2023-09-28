@@ -12,7 +12,7 @@
 
     &:hover {
       background-color: $color-highlight;
-      transform: translateY(-2px);
+      // transform: translateY(-2px);
     }
 
     &--active {
@@ -27,19 +27,12 @@
     backface-visibility: hidden;
 
     &::before {
-      // content: '';
       display: block;
       height: 100%;
       width: 100%;
       position: absolute;
       top: 0;
       left: 0;
-      // background-image: linear-gradient(
-      //   to right bottom,
-      //   $color-grad-1,
-      //   $color-grad-2
-      // );
-      // opacity: 0.4;
     }
 
     img {

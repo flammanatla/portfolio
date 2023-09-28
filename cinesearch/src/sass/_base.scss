@@ -39,7 +39,6 @@ $color-grey-light-2: #c6c6c6; // Lighter text
 
 html {
   box-sizing: border-box;
-  // font-size: 62.5%;
 
   @media only screen and (max-width: $bp-medium) {
     font-size: 80%;
