@@ -18,9 +18,13 @@ const controlMovies = async function () {
   model.state.search.query = url.searchParams.get('q');
 
   // render results
+  let shouldRender =
+    model.state.search.currentPageResults === null ? true : false;
   const searchResults = await model.getSearchResultsPage();
   if (searchResults) {
-    resultsView.render(searchResults);
+    shouldRender
+      ? resultsView.render(searchResults)
+      : resultsView.update(searchResults);
   }
 
   // render initial pagination buttons
