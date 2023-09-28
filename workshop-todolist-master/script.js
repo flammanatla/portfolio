@@ -11,23 +11,17 @@ clearBtn.addEventListener('click', removeAllTasks);
 filter.addEventListener('keyup', filterItem);
 
 let taskId = Number(localStorage.getItem('taskId')) || 0;
-//console.log(`next task id = `, taskId);
 
 function showIcons(li) {
-  //const buttonsContainer = document.createElement('span');
-  //li.appendChild(buttonsContainer);
-
   const deleteElement = document.createElement('span');
   deleteElement.className = 'delete-item';
   deleteElement.innerHTML = '<i class="fa fa-remove"><i>';
   li.appendChild(deleteElement);
-  //buttonsContainer.appendChild(deleteElement);
 
   const editElement = document.createElement('span');
   editElement.className = 'edit-item';
   editElement.innerHTML = '<i class="fa fa-edit"><i>';
   li.appendChild(editElement);
-  //buttonsContainer.appendChild(editElement);
 }
 
 function loadTasks() {
@@ -79,19 +73,13 @@ function updateOrDelete(event) {
   const iconContainer = event.target.parentElement;
   const collectionItem = iconContainer.parentElement;
   const taskId = Number(collectionItem.dataset.taskId);
-  //console.log(iconContainer);
-  //console.log(collectionItem);
-
-  console.log(`item id of selected item is `, taskId);
 
   if (iconContainer.classList.contains('delete-item')) {
-    //пересвідчимось чи юзер справді хоче видалити таск
     if (confirm('Do you really want to delete this task?')) {
       collectionItem.remove();
       deleteTaskInLocalStorage(collectionItem, taskId);
     }
   } else if (iconContainer.classList.contains('edit-item')) {
-    console.log('editing mode');
     collectionItem.textContent =
       prompt('Edit task summary', collectionItem.textContent) ||
       collectionItem.textContent;
@@ -110,20 +98,14 @@ function storeTaskInLocalStorage(summary, id) {
   }
 
   tasks.push({ summary, id });
-  console.log(tasks);
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function updateTaskInLocalStorage(taskItemAsHTMLElement, id) {
-  //console.log('updating task in local storage');
-  //console.log(taskItemAsHTMLElement);
-  //console.log(id);
-
   let tasks;
   tasks = JSON.parse(localStorage.getItem('tasks'));
 
   const objectIndex = tasks.findIndex(obj => obj.id === id);
-  console.log(objectIndex);
   tasks[objectIndex].summary = taskItemAsHTMLElement.textContent;
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
@@ -138,9 +120,6 @@ function deleteTaskInLocalStorage(taskItemAsHTMLElement, id) {
   }
 
   tasks.forEach(function (task, index) {
-    //console.log('task name:', task.summary);
-    //console.log('taskId:', task.id);
-
     if (taskItemAsHTMLElement.textContent === task.summary && id === task.id) {
       tasks.splice(index, 1);
     }
