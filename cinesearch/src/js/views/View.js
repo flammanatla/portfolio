@@ -1,5 +1,3 @@
-import spinner from 'bundle-text:../../img/spinner.svg';
-
 export default class View {
   _data;
 
