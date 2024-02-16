@@ -8,16 +8,20 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
-.repo {
+
+.socials {
   color: black;
   font-family: 'Inconsolata';
-  padding: 0.5rem 1rem;
   text-decoration: none;
-  border: 1px solid darkgray;
-  border-radius: 6px;
-  background-color: whitesmoke;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.socials__logo {
+  width: 1.5rem;
 }
 
 .projects {
@@ -50,7 +54,7 @@ body {
 }
 
 .preview__img {
-  padding: 1rem 0rem;
+  padding: 1rem 5rem;
 }
 
 .preview__details {
@@ -63,6 +67,20 @@ body {
 
 .preview__title {
   margin: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.preview__source {
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 14px;
+  color: black;
+}
+
+.preview__source:visited {
+  color: rgb(108, 5, 119);
 }
 
 .preview__description {
