@@ -1,14 +1,26 @@
 body {
   font-family: 'Manrope';
-
   font-size: 24px;
   margin: 2rem;
+}
+
+@media (max-width: 425px) {
+  body {
+    margin: 1rem;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+}
+
+@media (max-width: 425px) {
+  .header {
+    font-size: 18px;
+    gap: 1rem;
+  }
 }
 
 .socials {
@@ -26,18 +38,8 @@ body {
 
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 0.5rem 2rem;
-}
-
-@media (max-width: 43em) {
-  .projects {
-    grid-template-columns: 1fr;
-  }
-
-  body {
-    margin: 1rem;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  grid-gap: 1rem;
 }
 
 .project {
@@ -54,7 +56,13 @@ body {
 }
 
 .preview__img {
-  padding: 1rem 5rem;
+  padding: 1rem 3rem;
+}
+
+@media (max-width: 425px) {
+  .preview__img {
+    padding: 1rem 1rem;
+  }
 }
 
 .preview__details {
@@ -77,6 +85,7 @@ body {
   text-decoration: underline;
   font-size: 14px;
   color: black;
+  min-width: 85px;
 }
 
 .preview__source:visited {
