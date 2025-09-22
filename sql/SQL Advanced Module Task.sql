@@ -1,16 +1,19 @@
 /*
 TASK DESCRIPTION
 
-# Collect data which will help to analyse the dynamics of accounts creation, users interaction with emails (received, opened, clicked). These data allows us to compare activity between countries, define key markets, categorise customers per different parameters.
+Collect data which will help to analyse the dynamics of accounts creation, users interaction with emails (received, opened, clicked). 
+These data allows us to compare activity between countries, define key markets, categorise customers per different parameters.
 
-# Final table should contain following columns:
-# date | country | send_interval | is_verified | is_unsubscribed | account_cnt | sent_msg | open_msg | visit_msg | total_country_account_cnt | total_country_sent_cnt | rank_total_country_account_cnt | rank_total_country_sent_cnt
+Final table should contain following columns:
+| date | country | send_interval | is_verified | is_unsubscribed | 
+| account_cnt | sent_msg | open_msg | visit_msg | 
+| total_country_account_cnt | total_country_sent_cnt | rank_total_country_account_cnt | rank_total_country_sent_cnt
 
-# metrics for accounts and emails should be calculated separately to avoid conflicts for different logic behind field "date". Use UNION to combine results. In the final result leave only those records where rank_total_country_account_cnt <= 10 OR rank_total_country_sent_cnt <= 10.
+Metrics for accounts and emails should be calculated separately to avoid conflicts for different logic behind field "date". 
+Use UNION to combine results. In the final result leave only those records where rank_total_country_account_cnt <= 10 OR rank_total_country_sent_cnt <= 10.
 
-# Use at least one CTE. Use window functions to calculate ranks.
+Use at least one CTE. Use window functions to calculate ranks.
 
-# [Looker Studio Visualisation with data sourced from query](https://lookerstudio.google.com/reporting/79576511-ac7c-4189-805e-4174c035dc2b)
 */
 
 WITH email_metrics AS (
