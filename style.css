@@ -46,6 +46,10 @@ body {
   text-decoration: none;
 }
 
+.invisible {
+  display: none;
+}
+
 .preview {
   display: flex;
   flex-direction: column;
